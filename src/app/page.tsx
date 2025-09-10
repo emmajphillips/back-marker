@@ -64,11 +64,11 @@ export default async function Home() {
         ))}
         <p>Previous races this season:</p>
         {pastRaces.map((race: Race) => (
-          <div key={race.round + race.raceName + race.season}>
+          <Link key={race.round + race.raceName + race.season} href={`/race/results/${race.season}/${race.round}/${race.Circuit.circuitId}`}>
             <p>Round {race.round}</p>
             <p>{race.raceName}</p>
             <p>{race.date}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </>
