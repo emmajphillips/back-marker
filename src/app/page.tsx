@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { formatDate } from '@/app/_utils/formatDate'
+import { getCurrentSeasonRaces } from './_lib/raceData';
+import { formatDate } from '@/app/_utils/formatDate';
 
 type Race = {
   date: string;
@@ -13,13 +14,6 @@ type Race = {
 
 type Circuit = {
   circuitId: string;
-};
-
-const getCurrentSeasonRaces = async () => {
-  const response = await fetch('https://api.jolpi.ca/ergast/f1/current/');
-  const data = await response.json();
-
-  return data.MRData.RaceTable.Races;
 };
 
 export default async function Home() {

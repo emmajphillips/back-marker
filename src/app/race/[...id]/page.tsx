@@ -1,15 +1,7 @@
 import Link from 'next/link';
 
+import { getRace } from '@/app/_lib/raceData';
 import { formatDate } from '@/app/_utils/formatDate';
-
-const getRace = async (season: string, round: string) => {
-  const response = await fetch(
-    `https://api.jolpi.ca/ergast/f1/${season}/${round}/races`
-  );
-  const data = await response.json();
-
-  return data.MRData.RaceTable.Races[0];
-};
 
 export default async function Race({
   params,
