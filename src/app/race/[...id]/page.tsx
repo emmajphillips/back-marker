@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-const getRace = async (year: string, round: string) => {
+const getRace = async (season: string, round: string) => {
   const response = await fetch(
-    `https://api.jolpi.ca/ergast/f1/${year}/${round}/races`
+    `https://api.jolpi.ca/ergast/f1/${season}/${round}/races`
   );
   const data = await response.json();
 
@@ -15,8 +15,8 @@ export default async function Race({
   params: Promise<{ id: Array<string> }>;
 }) {
   const { id } = await params;
-  const [year, round] = id;
-  const race = await getRace(year, round);
+  const [season, round] = id;
+  const race = await getRace(season, round);
 
   return (
     <>
