@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { formatDate } from '@/app/_utils/formatDate';
+
 const getRace = async (season: string, round: string) => {
   const response = await fetch(
     `https://api.jolpi.ca/ergast/f1/${season}/${round}/races`
@@ -30,36 +32,38 @@ export default async function Race({
       <div>
         Weekend schedule:
         <p>
-          First practice: {race.FirstPractice.date} at {race.FirstPractice.time}
+          First practice: {formatDate(race.FirstPractice.date)} at{' '}
+          {race.FirstPractice.time}
         </p>
         {race.SecondPractice && (
           <p>
-            Second practice: {race.SecondPractice.date} at{' '}
+            Second practice: {formatDate(race.SecondPractice.date)} at{' '}
             {race.SecondPractice.time}
           </p>
         )}
         {race.ThirdPractice && (
           <p>
-            Third practice: {race.ThirdPractice.date} at{' '}
+            Third practice: {formatDate(race.ThirdPractice.date)} at{' '}
             {race.ThirdPractice.time}
           </p>
         )}
         {race.SprintQualifying && (
           <p>
-            Sprint qualifying: {race.SprintQualifying.date} at{' '}
+            Sprint qualifying: {formatDate(race.SprintQualifying.date)} at{' '}
             {race.SprintQualifying.time}
           </p>
         )}
         {race.Sprint && (
           <p>
-            Sprint race: {race.Sprint.date} at {race.Sprint.time}
+            Sprint race: {formatDate(race.Sprint.date)} at {race.Sprint.time}
           </p>
         )}
         <p>
-          Qualifying: {race.Qualifying.date} at {race.Qualifying.time}
+          Qualifying: {formatDate(race.Qualifying.date)} at{' '}
+          {race.Qualifying.time}
         </p>
         <p>
-          Race: {race.date} at {race.time}
+          Race: {formatDate(race.date)} at {race.time}
         </p>
       </div>
     </>

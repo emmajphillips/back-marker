@@ -1,4 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
+
+import { formatDate } from '@/app/_utils/formatDate'
 
 type Race = {
   date: string;
@@ -11,7 +13,7 @@ type Race = {
 
 type Circuit = {
   circuitId: string;
-}
+};
 
 const getCurrentSeasonRaces = async () => {
   const response = await fetch('https://api.jolpi.ca/ergast/f1/current/');
@@ -55,19 +57,25 @@ export default async function Home() {
 
         <p>Upcoming races</p>
         {upcomingRaces.map((race: Race) => (
-          <Link key={race.round + race.raceName + race.season} href={`/race/${race.season}/${race.round}/${race.Circuit.circuitId}`}>
+          <Link
+            key={race.round + race.raceName + race.season}
+            href={`/race/${race.season}/${race.round}/${race.Circuit.circuitId}`}
+          >
             <p>Round {race.round}</p>
             <p>{race.raceName}</p>
-            <p>{race.date}</p>
+            <p>{formatDate(race.date)}</p>
             {race.Sprint && <p>Sprint weekend!</p>}
           </Link>
         ))}
         <p>Previous races this season:</p>
         {pastRaces.map((race: Race) => (
-          <Link key={race.round + race.raceName + race.season} href={`/race/results/${race.season}/${race.round}/${race.Circuit.circuitId}`}>
+          <Link
+            key={race.round + race.raceName + race.season}
+            href={`/race/results/${race.season}/${race.round}/${race.Circuit.circuitId}`}
+          >
             <p>Round {race.round}</p>
             <p>{race.raceName}</p>
-            <p>{race.date}</p>
+            <p>{formatDate(race.date)}</p>
           </Link>
         ))}
       </div>
