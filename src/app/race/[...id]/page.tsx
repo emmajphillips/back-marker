@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { getRace } from '@/app/_lib/raceData';
 import { formatDate } from '@/app/_utils/formatDate';
+import { formatDateTime } from '@/app/_utils/formatDateTime';
 
 export default async function Race({
   params,
@@ -24,39 +25,40 @@ export default async function Race({
       <div>
         Weekend schedule:
         <p>
-          First practice: {formatDate(race.FirstPractice.date)} at{' '}
-          {race.FirstPractice.time}
+          First practice:{' '}
+          {formatDateTime(race.FirstPractice.date, race.FirstPractice.time)}
         </p>
         {race.SecondPractice && (
           <p>
-            Second practice: {formatDate(race.SecondPractice.date)} at{' '}
-            {race.SecondPractice.time}
+            Second practice:{' '}
+            {formatDateTime(race.SecondPractice.date, race.SecondPractice.time)}
           </p>
         )}
         {race.ThirdPractice && (
           <p>
-            Third practice: {formatDate(race.ThirdPractice.date)} at{' '}
-            {race.ThirdPractice.time}
+            Third practice:{' '}
+            {formatDateTime(race.ThirdPractice.date, race.ThirdPractice.time)}
           </p>
         )}
         {race.SprintQualifying && (
           <p>
-            Sprint qualifying: {formatDate(race.SprintQualifying.date)} at{' '}
-            {race.SprintQualifying.time}
+            Sprint qualifying:{' '}
+            {formatDateTime(
+              race.SprintQualifying.date,
+              race.SprintQualifying.time
+            )}
           </p>
         )}
         {race.Sprint && (
           <p>
-            Sprint race: {formatDate(race.Sprint.date)} at {race.Sprint.time}
+            Sprint race: {formatDateTime(race.Sprint.date, race.Sprint.time)}
           </p>
         )}
         <p>
-          Qualifying: {formatDate(race.Qualifying.date)} at{' '}
-          {race.Qualifying.time}
+          Qualifying:{' '}
+          {formatDateTime(race.Qualifying.date, race.Qualifying.time)}
         </p>
-        <p>
-          Race: {formatDate(race.date)} at {race.time}
-        </p>
+        <p>Race: {formatDateTime(race.date, race.time)}</p>
       </div>
     </>
   );

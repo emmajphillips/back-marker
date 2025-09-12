@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { getRace } from '@/app/_lib/raceData';
-import { formatDate } from '@/app/_utils/formatDate';
+import { formatDateTime } from '@/app/_utils/formatDateTime';
 
 type RaceResult = {
   position: string;
@@ -28,7 +28,7 @@ export default async function Race({
     <>
       <Link href={'/'}>Back</Link>
       <p>{raceWithResults.raceName}</p>
-      <p>{formatDate(raceWithResults.date)}</p>
+      <p>{formatDateTime(raceWithResults.date, raceWithResults.time)}</p>
       <p>RACE RESULTS</p>
       {raceWithResults.Results.map((result: RaceResult) => (
         <div key={round + circuit + season + result.Driver.givenName}>
