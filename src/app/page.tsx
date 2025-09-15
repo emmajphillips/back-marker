@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { getCurrentSeasonRaces } from './_lib/raceData';
 import { formatDate } from '@/app/_utils/formatDate';
+import { formatDateTime } from './_utils/formatDateTime';
 
 type Race = {
   date: string;
@@ -39,9 +40,8 @@ export default async function Home() {
           <div>
             Yes, It&apos;s the: {nextRace.raceName}
             <div>
-              <p>Race weekend details:</p>
-              <p>{nextRace.date}</p>
-              <p>{nextRace.time}</p>
+              <p>Race is:</p>
+              <p>{formatDateTime(nextRace.date, nextRace.time)}</p>
               {nextRace.Sprint && <p>Psst...It&apos;s a sprint weekend</p>}
             </div>
           </div>
